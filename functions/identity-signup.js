@@ -4,6 +4,9 @@ const { faunaFetch } = require('./utils/fauna');
 exports.handler = async (event) => {
     const { user } = JSON.parse(event.body);
 
+    // Logging the user
+    console.log("user = ", user);
+
     // create a new customer in Stripe
     const customer = await stripe.customers.create({ name: user.full_name, email: user.email });
 
