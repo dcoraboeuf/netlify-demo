@@ -215,7 +215,7 @@
             .then((res) => res.json())
             .then((data) => {
                 const container = document.querySelector('#subscriptions');
-                container.content.innerText = JSON.stringify(data);
+                container.innerText = JSON.stringify(data);
             });
 
         // TODO POC code to remove
