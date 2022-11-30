@@ -73,6 +73,11 @@
     </div>
 </div>
 
+<template id="subscriptions">
+
+</template>
+
+<!-- TODO POC code to remove -->
 <template id="content">
 
     <figure class="content-display">
@@ -200,6 +205,20 @@
 
         const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
 
+        // Getting the subscriptions
+        fetch('/.netlify/functions/get-subscriptions', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                const template = document.querySelector('#subscriptions');
+                template.content.innerText = JSON.stringify(data);
+            });
+
+        // TODO POC code to remove
         ['free', 'pro', 'premium'].forEach((type) => {
 
             fetch('/.netlify/functions/get-protected-content', {
