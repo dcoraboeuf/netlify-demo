@@ -58,6 +58,10 @@
     <button id="right">Sign Up</button>
 </div>
 
+<div id="subscriptions">
+
+</div>
+
 <div class="corgi-content">
     <div class="content">
         <h2>Free Content</h2>
@@ -72,10 +76,6 @@
         <div class="premium"></div>
     </div>
 </div>
-
-<template id="subscriptions">
-
-</template>
 
 <!-- TODO POC code to remove -->
 <template id="content">
@@ -214,8 +214,8 @@
         })
             .then((res) => res.json())
             .then((data) => {
-                const template = document.querySelector('#subscriptions');
-                template.content.innerText = JSON.stringify(data);
+                const container = document.querySelector('#subscriptions');
+                container.content.innerText = JSON.stringify(data);
             });
 
         // TODO POC code to remove
